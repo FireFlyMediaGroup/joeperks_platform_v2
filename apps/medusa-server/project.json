@@ -1,0 +1,29 @@
+{
+  "name": "medusa-server",
+  "root": "apps/medusa-server",
+  "sourceRoot": "apps/medusa-server/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": { 
+        "cwd": "apps/medusa-server", 
+        "command": "pnpm dev" 
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": { 
+        "cwd": "apps/medusa-server", 
+        "command": "pnpm build" 
+      }
+    },
+    "migrate": {
+      "executor": "nx:run-commands",
+      "options": { 
+        "cwd": "apps/medusa-server", 
+        "command": "pnpm exec medusa db:migrate" 
+      }
+    }
+  }
+}
