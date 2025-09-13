@@ -92,6 +92,12 @@ pnpm nx run-many -t build
 pnpm nx run-many -t test
 ```
 
+### **Admin Access**
+- **Admin Panel**: http://localhost:9000/admin
+- **Email**: `admin@joeperks.com`
+- **Password**: `admin123`
+- **Full Credentials**: See `config/secrets/development/admin-credentials.md`
+
 ### **Available Applications**
 
 | Application | Purpose | Port | Status |
