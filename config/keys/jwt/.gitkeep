@@ -1,0 +1,2 @@
+# JWT signing keys per environment
+# Generate using: openssl rand -base64 32
