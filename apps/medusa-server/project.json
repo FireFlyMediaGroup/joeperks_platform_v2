@@ -6,23 +6,44 @@
   "targets": {
     "serve": {
       "executor": "nx:run-commands",
-      "options": { 
-        "cwd": "apps/medusa-server", 
-        "command": "pnpm dev" 
+      "options": {
+        "cwd": "apps/medusa-server",
+        "command": "pnpm dev"
       }
     },
     "build": {
       "executor": "nx:run-commands",
-      "options": { 
-        "cwd": "apps/medusa-server", 
-        "command": "pnpm build" 
+      "options": {
+        "cwd": "apps/medusa-server",
+        "command": "pnpm build"
       }
     },
     "migrate": {
       "executor": "nx:run-commands",
-      "options": { 
-        "cwd": "apps/medusa-server", 
-        "command": "pnpm exec medusa db:migrate" 
+      "options": {
+        "cwd": "apps/medusa-server",
+        "command": "pnpm exec medusa db:migrate"
+      }
+    },
+    "db:check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/medusa-server",
+        "command": "pnpm run db:check"
+      }
+    },
+    "db:seed": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/medusa-server",
+        "command": "pnpm run seed:marketplace"
+      }
+    },
+    "user:create": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/medusa-server",
+        "command": "pnpm exec medusa user"
       }
     }
   }
