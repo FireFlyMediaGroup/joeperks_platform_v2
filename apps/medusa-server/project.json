@@ -45,6 +45,13 @@
         "cwd": "apps/medusa-server",
         "command": "pnpm exec medusa user"
       }
+    },
+    "redis:test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/medusa-server",
+        "command": "npx tsx src/scripts/test-redis.ts"
+      }
     }
   }
 }
