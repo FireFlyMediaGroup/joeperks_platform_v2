@@ -93,10 +93,12 @@ pnpm nx run-many -t test
 ```
 
 ### **Admin Access**
-- **Admin Panel**: http://localhost:9000/admin
+- **Admin Panel**: http://localhost:9000/app
 - **Email**: `admin@joeperks.com`
 - **Password**: `admin123`
 - **Full Credentials**: See `config/secrets/development/admin-credentials.md`
+
+> **📖 Important**: This is the Medusa Admin Panel for technical operations. See `docs/admin-interfaces-guide.md` for information about the different admin interfaces and their purposes.
 
 ### **Available Applications**
 

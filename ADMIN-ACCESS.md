@@ -1,5 +1,7 @@
 # 🔐 Admin Access - Quick Reference
 
+> **📖 Important**: This is the **Medusa Admin Panel** for technical operations. For information about the different admin interfaces, see: `docs/admin-interfaces-guide.md`
+
 ## Default Admin Credentials
 
 **Email**: `admin@joeperks.com`  
@@ -7,7 +9,7 @@
 
 ## Access URLs
 
-**Admin Panel**: http://localhost:9000/admin  
+**Admin Panel**: http://localhost:9000/app
 **API Base**: http://localhost:9000
 
 ## Quick Start
@@ -17,7 +19,7 @@
    pnpm nx serve medusa-server
    ```
 
-2. **Open admin panel**: http://localhost:9000/admin
+2. **Open admin panel**: http://localhost:9000/app
 
 3. **Login** with credentials above
 
