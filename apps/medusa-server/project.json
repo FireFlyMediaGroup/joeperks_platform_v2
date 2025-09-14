@@ -52,6 +52,13 @@
         "cwd": "apps/medusa-server",
         "command": "npx tsx src/scripts/test-redis.ts"
       }
+    },
+    "auth:test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/medusa-server",
+        "command": "npx tsx src/scripts/test-stytch.ts"
+      }
     }
   }
 }

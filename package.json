@@ -47,6 +47,8 @@
   },
   "nx": {},
   "dependencies": {
+    "@stytch/nextjs": "^21.11.1",
+    "@stytch/vanilla-js": "^5.35.1",
     "next": "~15.2.4",
     "react": "19.0.0",
     "react-dom": "19.0.0"
