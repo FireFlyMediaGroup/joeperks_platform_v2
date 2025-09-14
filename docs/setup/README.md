@@ -58,8 +58,8 @@ Joe Perks is a **multi-tenant coffee fundraising marketplace** built with modern
 - **Multi-tenant**: Organization and roaster-level access control
 - **API Security**: JWT validation, route protection, and session management
 - **Documentation**:
-  - [Authentication Implementation Guide](./authentication-implementation-guide.md)
-  - [Stytch Auth & RBAC Guide](./stytch-auth-rbac-guide.md)
+  - [Authentication Implementation Guide](06-authentication-implementation-guide.md)
+  - [Stytch Auth & RBAC Guide](06-stytch-auth-rbac-guide.md)
   - [Step 06 Summary](./06-stytch-auth-summary.md)
 
 ## 🚀 Current Project Structure
