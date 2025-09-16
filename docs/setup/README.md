@@ -265,6 +265,12 @@ cat .env | grep DATABASE_URL
 | `docs/prd.md` | Product Requirements Document |
 | `docs/architecture.md` | Technical Architecture Overview |
 | `docs/greenfield/README.md` | Complete Build Guide (14 steps) |
+| `docs/setup/roaster-portal-getting-started.md` | Roaster Portal – Getting Started |
+| `docs/setup/platform-admin-getting-started.md` | Platform Admin – Getting Started |
+| `docs/setup/organization-dashboard-getting-started.md` | Organization Dashboard – Getting Started |
+| `docs/setup/storefront-customer-getting-started.md` | Storefront (Customer) – Getting Started |
+| `docs/setup/medusa-server-getting-started.md` | Medusa Server (Backend) – Getting Started |
+| `docs/epics/roaster-portal/02-roaster-admin-panel.md` | Roaster Admin Panel – Detailed Architecture & Security |
 | `docs/setup/service-accounts-guide.md` | External Service Configuration |
 | `config/SECURITY.md` | Security Best Practices |
 
