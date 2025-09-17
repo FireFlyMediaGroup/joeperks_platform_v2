@@ -3,19 +3,27 @@
 ## Authentication Service
 **Primary Responsibility**: Multi-tenant user authentication, authorization, and organization management
 **Key Interfaces**:
-- `/auth/login` - Kinde OAuth flow initiation with organization context
-- `/auth/callback` - OAuth callback handling and session establishment
-- `/auth/validate` - Token validation with role and feature flag resolution
+- `/auth/login` - Stytch login (email/password or magic link) and session establishment
+- `/auth/validate` - Token validation and role resolution
 - `/auth/organizations/{id}/invite` - Organization member invitation workflow
-**Dependencies**: Kinde Auth API, organization management service, Redis for session caching
-**Technology**: Kinde Auth with organization-based multi-tenancy, built-in feature flags, and granular RBAC
+- `/auth/vendors/login` - Vendor admin authentication (custom actor type)
+**Dependencies**: Stytch API, organization management service, Redis for session caching
+**Technology**: Stytch with multi-tenant RBAC; vendor admins use a custom Medusa actor type
 
 **Key Features**:
-- **Multi-tenant Organizations**: Each fundraising organization maps to a Kinde organization
-- **Role-Based Access Control**: Admin, campaign_manager, viewer roles with granular permissions
-- **Feature Flags**: Built-in feature gating for campaign types, payment methods, and roaster features
+- **Multi-tenant Organizations**: Each fundraising organization is scoped in app context; vendor admins are modeled via a custom Medusa actor type
+- **Role-Based Access Control**: platform_admin, vendor_admin, org_admin, customer roles with granular permissions
 - **Member Management**: Streamlined invitation and role assignment workflows
-- **Session Management**: Secure JWT tokens with organization context and feature flag claims
+- **Session Management**: Secure JWT tokens with claims for `org_id`, `actor_type`, and optional `vendor_id`
+
+## Marketplace Module (Vendor Management)
+**Primary Responsibility**: Native Medusa v2 marketplace using modules, workflows, and module links (no external plugin)
+**Key Interfaces**:
+- `/vendors` (POST) - Create vendor + admin via create-vendor workflow
+- `/vendors/products` - Vendor product management (planned)
+- `/vendors/orders` - Vendor order retrieval (planned)
+**Dependencies**: MarketplaceModuleService, links to Product and Order modules, Authentication (vendor actor type)
+**Technology**: Custom Medusa module with `Vendor` and `VendorAdmin` models; module links `vendor↔product` and `vendor↔order`; workflows with compensation (e.g., create-vendor)
 
 ## Organization Management Service
 **Primary Responsibility**: Organization onboarding, campaign management, and storefront configuration

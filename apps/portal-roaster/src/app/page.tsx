@@ -1,4 +1,6 @@
 import styles from './page.module.css';
+import { Button } from "@medusajs/ui";
+
 
 export default function Index() {
   /*
@@ -15,6 +17,7 @@ export default function Index() {
               <span> Hello there, </span>
               Welcome portal-roaster 👋
             </h1>
+            <Button size="small" variant="primary">Get started</Button>
           </div>
 
           <div id="hero" className="rounded">

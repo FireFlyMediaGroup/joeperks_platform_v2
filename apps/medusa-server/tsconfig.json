@@ -12,12 +12,17 @@
     "sourceMap": false,
     "inlineSourceMap": true,
     "outDir": "./.medusa/server",
-    "rootDir": "./",
+    "rootDir": "../../",
     "jsx": "react-jsx",
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "checkJs": false,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "shared-types": ["../../libs/shared-types/src/index.ts"],
+      "shared-utils": ["../../libs/shared-utils/src/index.ts"]
+    }
   },
   "ts-node": {
     "swc": true
@@ -30,6 +35,7 @@
     "node_modules",
     ".medusa/server",
     ".medusa/admin",
-    ".cache"
+    ".cache",
+    "src/scripts/test-redis.ts"
   ]
 }

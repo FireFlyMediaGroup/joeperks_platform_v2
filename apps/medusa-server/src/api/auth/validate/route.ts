@@ -4,7 +4,7 @@
  * Validates JWT tokens and returns user context.
  */
 
-import { Request, Response } from 'express'
+import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { createStytchAuthService } from '../../../services/auth.service'
 
 /**
@@ -12,9 +12,9 @@ import { createStytchAuthService } from '../../../services/auth.service'
  * 
  * Validate a JWT token and return user context
  */
-export async function POST(req: Request, res: Response) {
+export async function POST(req: MedusaRequest, res: MedusaResponse) {
   try {
-    const { token } = req.body
+    const { token } = (req.body as any)
 
     if (!token) {
       return res.status(400).json({
@@ -56,7 +56,7 @@ export async function POST(req: Request, res: Response) {
  * 
  * Validate session from cookie
  */
-export async function GET(req: Request, res: Response) {
+export async function GET(req: MedusaRequest, res: MedusaResponse) {
   try {
     const sessionToken = req.cookies?.stytch_session
 

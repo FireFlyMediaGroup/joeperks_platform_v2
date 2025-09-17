@@ -1,12 +1,12 @@
 # Joe Perks Marketplace Implementation Plan
 
-Medusa v2 + Marketplace Plugin + Stytch + Supabase + Stripe Connect
+Medusa v2 native marketplace + Stytch + Supabase + Stripe Connect
 
 Last updated: 2025-09-12
 
 ## 1) Purpose and Summary
 
-This document consolidates what we learned from our review of the PRD, current repo state, and the Medusa 2 marketplace plugin by Tech-Labi. It defines an atomic, step-by-step plan to bring the project into alignment with our stated goals:
+This document consolidates what we learned from our review of the PRD, current repo state, and the official Medusa v2 marketplace recipe (native modules approach). It defines an atomic, step-by-step plan to bring the project into alignment with our stated goals:
 
 - Medusa v2 backend with marketplace capabilities
 - Supabase Postgres for development (no local Postgres by default)
@@ -21,7 +21,7 @@ This document consolidates what we learned from our review of the PRD, current r
 - Storefront: Two parallel storefronts exist (`apps/storefront` and `customer-storefront`) causing confusion
 - Auth: Kinde presently referenced in code/libs; our decision is to standardize on Stytch
 - DB: Local Postgres/Redis suggested by setup-dev.sh; our decision is Supabase Postgres for dev
-- Marketplace: No vendor isolation modules yet; plugin candidate identified: `@techlabi/medusa-marketplace-plugin`
+- Marketplace: No vendor isolation modules yet; native marketplace module to be implemented per official Medusa v2 recipe
 - Payments: Stripe provider references on frontend; backend Connect logic not yet implemented
 
 ## 3) Guiding Principles
@@ -29,7 +29,7 @@ This document consolidates what we learned from our review of the PRD, current r
 - Single source of truth: backend business logic in Medusa v2 modules/services
 - Multi-tenant by default: every request resolves tenant context and enforces it in DB/service layer
 - Cloud-first dev: Supabase Postgres via `DATABASE_URL` (no local DB by default)
-- Minimal patching: adopt marketplace plugin backend-only first; add UI patch later only if needed
+- Native marketplace implementation using modules, workflows, and module links; no external plugin
 - Security: Stytch for auth; principle of least privilege; secure secrets management
 
 ## 4) Atomic Step-by-Step Plan
@@ -74,18 +74,23 @@ Deliverables:
 - Stytch-powered auth and RBAC across apps
 - Tests covering role checks and session validation
 
-### Phase 4 — Integrate Marketplace Plugin (backend-only)
-4.1 Add plugin to workspace root (pnpm workspace):
-- `pnpm add -w @techlabi/medusa-marketplace-plugin`
-4.2 Register plugin in `apps/medusa-server/medusa-config.ts` plugins array.
-4.3 Add `API_KEY` to `apps/medusa-server/.env` (super admin creation secret). If not using Medusa Admin UI, skip `VITE_BACKEND_URL`.
-4.4 Run migrations: `npx medusa db:migrate` from `apps/medusa-server`.
-4.5 Create super admin via `POST /stores/super` with `Authorization: API_KEY`.
-4.6 Map plugin “vendor store” to our domain “roaster”; document entity ownership and isolation.
+### Phase 4 — Implement Native Marketplace (Medusa v2)
+4.1 Create a marketplace module under `apps/medusa-server/src/modules/marketplace` with models `Vendor` and `VendorAdmin`, and a `MarketplaceModuleService` (auto CRUD).
+4.2 Define module links under `apps/medusa-server/src/links`:
+- `vendor-product.ts` (vendor → product)
+- `vendor-order.ts` (vendor → order)
+4.3 Implement `create-vendor` workflow with compensation and `setAuthAppMetadataStep({ actorType: "vendor" })`.
+4.4 Add API route `POST /vendors` with Zod validation and middlewares:
+- `authenticate("vendor", ["session", "bearer"], { allowUnregistered: true })`
+- `validateAndTransformBody(PostVendorCreateSchema)`
+4.5 Generate and run migrations from `apps/medusa-server`:
+- `npx medusa db:generate marketplace`
+- `npx medusa db:migrate`
 
 Deliverables:
-- Vendor store isolation enabled in backend
-- Super admin account for marketplace oversight
+- Vendor isolation via native module links (products/orders)
+- Vendor admin actor set via auth app metadata
+- Working vendor creation endpoint
 
 ### Phase 5 — Stripe Connect payouts (marketplace)
 5.1 Create onboarding flow for roasters (Connect accounts) and organizations if needed.
@@ -142,7 +147,7 @@ Deliverables:
 
 ## 5) Code/Config Snippets (for reference)
 
-Medusa plugin registration (apps/medusa-server/medusa-config.ts):
+Register marketplace module (apps/medusa-server/medusa-config.ts):
 
 ```ts
 module.exports = defineConfig({
@@ -150,29 +155,16 @@ module.exports = defineConfig({
     databaseUrl: process.env.DATABASE_URL,
     http: { /* CORS + secrets */ },
   },
-  plugins: [
-    { resolve: "@techlabi/medusa-marketplace-plugin", options: {} },
+  modules: [
+    { resolve: "./src/modules/marketplace" },
   ],
 })
 ```
 
-Plugin env (.env for apps/medusa-server):
-
-```bash
-# Marketplace plugin
-API_KEY=supersecret
-# Optional if using Medusa Admin UI widgets
-# VITE_BACKEND_URL=http://localhost:9000
-```
-
-Create super admin (after migrations):
-
-```bash
-curl -X POST http://localhost:9000/stores/super \
-  -d '{ "email":"admin@test.com", "password": "supersecret" }' \
-  -H 'Content-Type: application/json' \
-  -H 'Authorization: supersecret'
-```
+API route (native):
+- `POST /vendors` with vendor + admin payload
+- Auth: `authenticate("vendor", ["session", "bearer"], { allowUnregistered: true })`
+- Validation: `validateAndTransformBody(PostVendorCreateSchema)`
 
 Stripe Connect high-level split (pseudo):
 
@@ -204,7 +196,7 @@ const roaster_amount = subtotal - organization_amount + shipping_cost
 
 - Single storefront path; Medusa v2 stable on Supabase
 - Stytch auth live with RBAC
-- Marketplace plugin powering vendor separation (roasters)
+- Native marketplace module powering vendor separation (roasters)
 - Stripe Connect payouts live with audit trail
 - Campaign workflows integrated; multi-tenant isolation enforced
 - CI/CD green; docs up-to-date; acceptance checks pass

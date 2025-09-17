@@ -2,7 +2,6 @@
   "name": "shared-utils",
   "version": "0.0.1",
   "private": true,
-  "type": "module",
   "main": "../../dist/libs/shared-utils/index.js",
   "types": "../../dist/libs/shared-utils/index.d.ts",
   "dependencies": {}

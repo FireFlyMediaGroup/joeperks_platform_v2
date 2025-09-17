@@ -14,7 +14,7 @@ Stand up a clean, officially supported Medusa v2 backend and admin, verify it lo
 - Commerce modules overview: https://docs.medusajs.com/resources/commerce-modules
 
 ## Scope
-- In scope: new Medusa app scaffold, DB config, local dev, admin login, CORS, seeding, Kinde auth integration, org/roaster domain, API routes, tests, build/start, cutover.
+- In scope: new Medusa app scaffold, DB config, local dev, admin login, CORS, seeding, Stytch auth integration, org/roaster domain, API routes, tests, build/start, cutover.
 - Out of scope: storefront rewriting; production deployment details beyond start/build basics (tracked separately).
 
 ## Assumptions
@@ -25,7 +25,7 @@ Stand up a clean, officially supported Medusa v2 backend and admin, verify it lo
 ## Risks & Mitigations
 - Module autoload/TS bootstrap issues: mitigated by starting from create-medusa-app baseline and Node 20.x.
 - Schema differences: plan migrations/seed carefully and validate data model decisions.
-- Auth coupling: integrate Kinde cleanly via middleware and env‑driven config; cover with integration tests.
+- Auth coupling: integrate Stytch cleanly via middleware and env‑driven config; cover with integration tests.
 
 ---
 
@@ -55,9 +55,9 @@ Stand up a clean, officially supported Medusa v2 backend and admin, verify it lo
   - Acceptance: DB connections succeed using proper SSL settings only
 
 ### Phase 3 — Custom Features Port (Incremental)
-- [ ] P3.1 Kinde Auth integration (backend)
-  - Implement `setupKinde`, `protectRoute`, `getUser` middleware per our pattern
-  - Env: Kinde issuer, client id/secret, etc.
+- [ ] P3.1 Stytch Auth integration (backend)
+  - Implement `setupStytch`, `protectRoute`, `getUser` middleware per our pattern
+  - Env: Stytch project ID, client ID/secret, etc.
   - Acceptance: Protected test route returns 401 unauthenticated; 200 when authed
 - [ ] P3.2 Domain Modeling (Organization, Roaster, etc.)
   - Choose approach: custom module(s) under `src/modules` vs. simple API + services + models
@@ -76,7 +76,7 @@ Stand up a clean, officially supported Medusa v2 backend and admin, verify it lo
 
 ### Phase 5 — Testing & Quality
 - [ ] P5.1 Unit & Integration Tests
-  - Auth middleware tests (Kinde)
+  - Auth middleware tests (Stytch)
   - API route smoke tests
   - Acceptance: CI/Local test run passes (Node 20.x)
 - [ ] P5.2 Lint & Typechecks
@@ -107,7 +107,7 @@ Stand up a clean, officially supported Medusa v2 backend and admin, verify it lo
 ## Acceptance Criteria (Epic)
 - A clean Medusa v2 backend runs locally with Node 20.x and connects to Supabase with SSL configured properly.
 - Admin UI is accessible; an admin user can be created and logs in successfully.
-- Kinde auth works and protects routes; tests cover success/failure paths.
+- Stytch auth works and protects routes; tests cover success/failure paths.
 - Organization/Roaster baseline features are ported and tested.
 - Build/start succeed without module autoload/TS bootstrap errors.
 - Old backend is decommissioned after cutover, with documentation updated.

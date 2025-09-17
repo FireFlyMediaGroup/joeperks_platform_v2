@@ -59,10 +59,10 @@ coffee-fundraising-platform/
 │   │   │   │   ├── orders/           # Order monitoring
 │   │   │   │   └── analytics/        # Platform metrics
 │   │   │   ├── components/           # Admin UI components
-│   │   │   │   ├── auth/             # Kinde auth components
+│   │   │   │   ├── auth/             # Stytch auth components
 │   │   │   │   └── rbac/             # Role-based UI components
 │   │   │   └── hooks/                # Custom React hooks
-│   │   │       ├── useKindeAuth.ts   # Kinde authentication hook
+│   │   │       ├── useStytchAuth.ts   # Stytch authentication hook
 │   │   │       └── useFeatureFlags.ts # Feature flag hook
 │   │   ├── vite.config.ts
 │   │   └── package.json
@@ -77,7 +77,7 @@ coffee-fundraising-platform/
 │       │   │   ├── orders/           # Fulfillment dashboard
 │       │   │   └── analytics/        # Performance metrics
 │       │   ├── components/
-│       │   │   └── auth/             # Kinde auth components
+│       │   │   └── auth/             # Stytch auth components
 │       │   └── hooks/
 │       │       └── useRoasterAuth.ts # Roaster-specific auth hook
 │       ├── vite.config.ts
@@ -87,7 +87,7 @@ coffee-fundraising-platform/
 │   ├── shared-types/                 # TypeScript definitions
 │   │   ├── src/
 │   │   │   ├── auth/                 # Authentication types
-│   │   │   │   ├── kinde.types.ts    # Kinde-specific types
+│   │   │   │   ├── stytch.types.ts    # Stytch-specific types
 │   │   │   │   ├── user.types.ts     # User and role types
 │   │   │   │   └── organization.types.ts
 │   │   │   ├── api/                  # API request/response types
@@ -97,7 +97,7 @@ coffee-fundraising-platform/
 │   │
 │   ├── auth-utils/                   # Authentication utilities
 │   │   ├── src/
-│   │   │   ├── kinde-client.ts       # Kinde API client
+│   │   │   ├── stytch-client.ts       # Stytch API client
 │   │   │   ├── token-validation.ts   # JWT validation utilities
 │   │   │   ├── rbac-helpers.ts       # Role/permission helpers
 │   │   │   └── feature-flags.ts      # Feature flag utilities

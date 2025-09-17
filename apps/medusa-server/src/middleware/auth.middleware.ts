@@ -5,19 +5,9 @@
  * Integrates with Stytch authentication service.
  */
 
-import { Request, Response, NextFunction } from 'express'
 import { StytchAuthService, createStytchAuthService } from '../services/auth.service'
 import { UserRole, Permission, StytchUserContext } from 'shared-types'
 
-// Extend Express Request to include user context
-declare global {
-  namespace Express {
-    interface Request {
-      user?: StytchUserContext
-      authService?: StytchAuthService
-    }
-  }
-}
 
 /**
  * Authentication middleware options
@@ -36,7 +26,7 @@ export interface AuthMiddlewareOptions {
 export function createAuthMiddleware(options: AuthMiddlewareOptions = {}) {
   const authService = createStytchAuthService()
 
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async (req: any, res: any, next: any) => {
     try {
       // Extract token from Authorization header
       const authHeader = req.headers.authorization
@@ -204,7 +194,7 @@ export const optionalAuth = createAuthMiddleware({ required: false })
 /**
  * Helper function to check if user has specific permission in route handler
  */
-export function checkPermission(req: Request, permission: Permission): boolean {
+export function checkPermission(req: any, permission: Permission): boolean {
   if (!req.user || !req.authService) {
     return false
   }
@@ -215,7 +205,7 @@ export function checkPermission(req: Request, permission: Permission): boolean {
 /**
  * Helper function to check if user has specific role in route handler
  */
-export function checkRole(req: Request, role: UserRole): boolean {
+export function checkRole(req: any, role: UserRole): boolean {
   if (!req.user || !req.authService) {
     return false
   }
@@ -226,7 +216,7 @@ export function checkRole(req: Request, role: UserRole): boolean {
 /**
  * Helper function to get user permissions in route handler
  */
-export function getUserPermissions(req: Request): Permission[] {
+export function getUserPermissions(req: any): Permission[] {
   if (!req.user || !req.authService) {
     return []
   }

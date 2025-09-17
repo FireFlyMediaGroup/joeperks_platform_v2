@@ -4,7 +4,7 @@
  * Handles user logout and session revocation.
  */
 
-import { Request, Response } from 'express'
+import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { createStytchAuthService } from '../../../services/auth.service'
 
 /**
@@ -12,9 +12,9 @@ import { createStytchAuthService } from '../../../services/auth.service'
  * 
  * Logout user and revoke session
  */
-export async function POST(req: Request, res: Response) {
+export async function POST(req: MedusaRequest, res: MedusaResponse) {
   try {
-    const { token } = req.body
+    const { token } = (req.body as any)
     const sessionToken = token || req.cookies?.stytch_session
 
     if (!sessionToken) {

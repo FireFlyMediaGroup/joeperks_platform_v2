@@ -2,15 +2,15 @@
 
 ## Monorepo Management
 - **Build System**: Nx 21.4+ for monorepo orchestration and build optimization
-- **Package Manager**: npm workspaces with dependency hoisting
+- **Package Manager**: pnpm workspaces (Nx + pnpm) with dependency hoisting
 - **Code Sharing**: Shared TypeScript libraries (`libs/`) across applications
 
 ## Backend Technologies
 - **Framework**: Medusa.js v2.10+ with TypeScript
 - **Runtime**: Node.js 20+ with Express.js
-- **Database**: PostgreSQL 14+ with Prisma ORM
+- **Database**: PostgreSQL 14+ with MikroORM (Medusa v2 default)
 - **Cache**: Redis 7+ for sessions and performance
-- **Authentication**: Kinde Auth with multi-tenant organizations and RBAC
+- **Authentication**: Stytch with multi-tenant RBAC
 - **API Style**: REST with GraphQL for complex queries
 
 ## Frontend Technologies
@@ -20,18 +20,18 @@
 - **State Management**: Zustand for client state, React Query for server state
 - **Forms**: React Hook Form with Zod validation
 - **Charts**: Recharts for analytics dashboards
-- **Authentication**: Kinde React SDK with organization context
+- **Authentication**: Stytch SDK (Next.js/React) with organization context
 
 ## Infrastructure & DevOps
 - **Hosting**: Railway/Vercel hybrid (API on Railway, storefronts on Vercel)
-- **Database**: Neon PostgreSQL with connection pooling and branch support
+- **Database**: Supabase PostgreSQL with connection pooling (pgbouncer) and branch support
 - **Cache**: Redis Cloud or Railway Redis
 - **CDN**: Vercel Edge Network for static assets
 - **Monitoring**: Vercel Analytics and Railway metrics
 - **CI/CD**: GitHub Actions with Nx-optimized caching and automated testing
 
 ## External Integrations
-- **Authentication**: Kinde for multi-tenant auth, RBAC, and feature flags
+- **Authentication**: Stytch for multi-tenant auth and RBAC
 - **Payments**: Stripe Connect for multi-party transactions
 - **Shipping**: ShipStation API + individual roaster APIs
 - **Geographic**: Google Maps API for geocoding and distance

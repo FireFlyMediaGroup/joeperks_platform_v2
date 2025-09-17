@@ -4,6 +4,37 @@
   "sourceRoot": "apps/admin-platform",
   "projectType": "application",
   "tags": [],
-  "// targets": "to see all targets run: nx show project admin-platform --web",
-  "targets": {}
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/admin-platform"
+      },
+      "defaultConfiguration": "development",
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "options": {
+        "buildTarget": "admin-platform:build",
+        "dev": true,
+        "port": 3001
+      },
+      "configurations": {
+        "production": {
+          "dev": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["apps/admin-platform/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
 }

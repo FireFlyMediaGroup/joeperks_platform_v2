@@ -85,7 +85,7 @@ The fundraising market for organizations (schools, nonprofits, sports teams) see
 ## Technical Requirements
 
 ### System Architecture
-- **Backend**: Medusa.js with custom multi-tenant extensions
+- **Backend**: Medusa.js v2 using native marketplace via custom modules, workflows, and module links (no external plugin)
 - **Frontend**: Next.js for organization storefronts, React for admin dashboards
 - **Database**: PostgreSQL with multi-tenant data isolation
 - **Payments**: Stripe Connect for multi-party payment splitting

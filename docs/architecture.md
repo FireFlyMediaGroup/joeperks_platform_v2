@@ -78,7 +78,7 @@ graph TB
 ## Tech Stack
 
 ### Backend Technologies
-- **Framework**: Medusa.js v2 with TypeScript and marketplace plugin
+- **Framework**: Medusa.js v2 with TypeScript; marketplace built using native modules, workflows, and module links (no external plugin)
 - **Runtime**: Node.js 20 LTS with Express.js
 - **Database**: Supabase PostgreSQL with multi-tenant isolation
 - **Cache**: Redis 7+ (managed) for sessions and performance

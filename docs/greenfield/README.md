@@ -2,7 +2,7 @@
 
 Authoritative, step-by-step instructions to create the platform exactly as defined in the PRD using:
 - Nx monorepo (pnpm)
-- Medusa v2 backend (+ marketplace plugin)
+- Medusa v2 backend with native marketplace module (no external plugin)
 - Supabase Postgres (dev/staging/prod)
 - Redis 7 (managed, no local docker by default)
 - Stytch (auth + RBAC) across all apps
@@ -19,7 +19,7 @@ This folder contains atomic, linear steps. Hand to any dev team and they can boo
 - Medusa v2 (MikroORM) + Redis 7
 - Stytch for auth (all apps)
 - Supabase Postgres URL for dev/test/prod (no local Postgres by default)
-- Marketplace plugin: backend-only by default; optional Medusa Admin UI extension
+- Marketplace: native Medusa v2 marketplace (modules, workflows, module links); plugin approach archived
 - Stripe Connect: Express accounts; payouts to roasters
 - Multi-tenancy: subdomain-based, path fallback in dev
 - Deploy: Vercel (Next.js) + Railway (Medusa)
@@ -41,7 +41,9 @@ Follow the numbered docs in order:
 4) 04_database_supabase.md
 5) 05_cache_redis.md
 6) 06_auth_stytch.md
-7) 07_marketplace_plugin.md
+7) 07_marketplace_native.md
+   - (Legacy reference: 07_marketplace_plugin.md — archived)
+
 8) 08_payments_stripe_connect.md
 9) 09_frontend_apps.md
 10) 10_multitenancy_routing.md

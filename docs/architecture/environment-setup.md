@@ -10,7 +10,7 @@ Based on the authoritative greenfield build guide:
 
 - **Package Manager**: pnpm
 - **Monorepo**: Nx with best-practice names
-- **Backend**: Medusa v2 (MikroORM) + marketplace plugin
+- **Backend**: Medusa v2 (MikroORM) + native marketplace module
 - **Database**: Supabase Postgres (dev/staging/prod)
 - **Cache**: Redis 7 (managed, no local docker by default)
 - **Authentication**: Stytch (auth + RBAC) across all apps

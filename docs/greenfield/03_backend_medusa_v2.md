@@ -47,7 +47,7 @@ pnpm add -D @mikro-orm/cli @medusajs/test-utils typescript @swc/core @swc/jest j
 cd ../../
 ```
 
-Configure medusa-config.ts (database, http secrets, plugins array present – populated later):
+Configure medusa-config.ts (database, http secrets, modules list present – marketplace module added in Step 07):
 ```ts
 // apps/medusa-server/medusa-config.ts
 import { loadEnv, defineConfig } from '@medusajs/framework/utils'
@@ -63,7 +63,7 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET!,
     },
   },
-  plugins: [],
+  modules: [],
 })
 ```
 
@@ -77,10 +77,7 @@ AUTH_CORS=http://localhost:3000
 JWT_SECRET=change-me
 COOKIE_SECRET=change-me
 REDIS_URL=
-# Plugin
-API_KEY=
-# Optional for Medusa Admin widget
-# VITE_BACKEND_URL=http://localhost:9000
+
 EOF
 ```
 
@@ -88,4 +85,7 @@ Commit:
 ```bash
 git add . && git commit -m "feat(api): medusa v2 server scaffold"
 ```
+
+> Next: proceed to Step 07 — Marketplace (Medusa v2 Native Recipe): docs/greenfield/07_marketplace_native.md
+
 

@@ -40,7 +40,7 @@ async function checkDatabase() {
       "tax_rate",
     ]
 
-    const tableStatus = []
+    const tableStatus: { table: string; exists: boolean; records: number }[] = []
 
     for (const table of coreTables) {
       try {

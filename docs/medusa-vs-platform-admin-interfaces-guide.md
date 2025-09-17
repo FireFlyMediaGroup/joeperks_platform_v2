@@ -1,4 +1,4 @@
-# Joe Perks Platform - Admin Interfaces Guide
+# Joe Perks Platform - Admin Interfaces Guide-Medusa Admin vs. Platform Admin roles
 
 ## Overview
 

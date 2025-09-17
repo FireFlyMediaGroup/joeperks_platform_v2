@@ -1,45 +1,18 @@
-# 07 — Marketplace Plugin (@techlabi/medusa-marketplace-plugin)
+# 07 — Marketplace Plugin (Archived)
 
-## Install (backend-only path)
+This step has been archived. We previously considered `@techlabi/medusa-marketplace-plugin`, but it is incompatible with Medusa v2 due to workflow conflicts.
+
+Use the native recipe instead:
+- New step: 07 — Marketplace (Medusa v2 Native Recipe)
+- File: `07_marketplace_native.md`
+- Official recipe: https://docs.medusajs.com/resources/recipes/marketplace/examples/vendors
+
+If the plugin is already installed, remove it and clean up config:
 ```bash
-pnpm add -w @techlabi/medusa-marketplace-plugin
+pnpm remove @techlabi/medusa-marketplace-plugin
 ```
 
-## Register in Medusa config
-```ts
-// apps/medusa-server/medusa-config.ts
-plugins: [
-  { resolve: "@techlabi/medusa-marketplace-plugin", options: {} },
-],
-```
-
-## Env
-```bash
-# apps/medusa-server/.env
-API_KEY=supersecret
-# Optional if using Medusa Admin UI widgets
-# VITE_BACKEND_URL=http://localhost:9000
-```
-
-## Migrate and bootstrap super admin
-```bash
-pnpm nx run medusa-server:migrate
-curl -X POST http://localhost:9000/stores/super \
-  -d '{ "email":"admin@test.com", "password":"supersecret" }' \
-  -H 'Content-Type: application/json' -H 'Authorization: supersecret'
-```
-
-## Map “vendor store” → “roaster”
-Document that each roaster operates as an isolated vendor store (products, orders, customers, shipping profiles, stock locations, users).
-
-## Optional track: Medusa Admin UI integration
-If adopting Medusa Admin UI alongside custom apps:
-1) Add postinstall script in root package.json:
-```json
-"postinstall": "node node_modules/@techlabi/medusa-marketplace-plugin/.medusa/server/src/patch-admin.js"
-```
-2) Set `VITE_BACKEND_URL` in Medusa .env.
-3) Reinstall deps: `pnpm i`
-
-Use Admin UI for super admin/vendor ops; keep custom Platform Admin for PRD-specific UX.
-
+For details, see:
+- docs/marketplace-integration-status.md (investigation + resolution)
+- docs/architecture/components.md → Marketplace Module (Vendor Management)
+- docs/greenfield/07_marketplace_native.md (current implementation)

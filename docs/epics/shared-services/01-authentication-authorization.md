@@ -27,7 +27,7 @@ Comprehensive authentication and authorization system providing secure access co
 4. **Security Compliance**: Industry-standard security practices and compliance
 
 ## Acceptance Criteria
-- [ ] Multi-portal authentication system with Kinde integration
+- [ ] Multi-portal authentication system with Stytch integration
 - [ ] Role-based permission management for all user types
 - [ ] Organization-level access control and team management
 - [ ] Team member invitation and role assignment workflows
@@ -66,7 +66,7 @@ Comprehensive authentication and authorization system providing secure access co
 - **Compliance**: 100% compliance with security standards and regulations
 
 ## Dependencies
-- **Upstream**: Kinde authentication service
+- **Upstream**: Stytch authentication service
 - **Downstream**: All platform portals and services
 - **External**: Security monitoring and compliance tools
 
@@ -79,7 +79,7 @@ Comprehensive authentication and authorization system providing secure access co
   - **Mitigation**: Clear role definitions and user-friendly interfaces
 
 ## Technical Considerations
-- Integration with Kinde for authentication services
+- Integration with Stytch for authentication services
 - JWT token management and validation
 - Role-based access control (RBAC) implementation
 - Cross-origin resource sharing (CORS) configuration
@@ -178,7 +178,7 @@ Comprehensive authentication and authorization system providing secure access co
 
 ## Definition of Done
 - All user stories completed and tested
-- Kinde integration fully operational
+- Stytch integration fully operational
 - Role-based permissions implemented and tested
 - Multi-factor authentication functional
 - Session management working across all portals

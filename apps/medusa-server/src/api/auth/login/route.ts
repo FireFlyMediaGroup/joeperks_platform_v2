@@ -4,7 +4,7 @@
  * Handles user login via Stytch authentication.
  */
 
-import { Request, Response } from 'express'
+import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { createStytchAuthService } from '../../../services/auth.service'
 import { LoginRequest, LoginResponse } from 'shared-types'
 
@@ -13,9 +13,9 @@ import { LoginRequest, LoginResponse } from 'shared-types'
  * 
  * Authenticate user with email and password
  */
-export async function POST(req: Request, res: Response) {
+export async function POST(req: MedusaRequest, res: MedusaResponse) {
   try {
-    const { email, password, organizationId, redirectUrl }: LoginRequest = req.body
+    const { email, password, organizationId, redirectUrl } = (req.body as any) as LoginRequest
 
     // Validate required fields
     if (!email || !password) {

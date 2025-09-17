@@ -33,4 +33,4 @@ Code Push → Nx Affected Tests → Nx Affected Build → Railway/Vercel Deploy
 - **Application Performance**: Railway metrics, Vercel analytics, response times
 - **Business Metrics**: Transaction volumes, approval rates, revenue splits
 - **Infrastructure**: Railway health checks, Neon connection pooling metrics
-- **Security**: Kinde auth logs, failed authentication attempts, suspicious activity
+- **Security**: Stytch auth logs, failed authentication attempts, suspicious activity

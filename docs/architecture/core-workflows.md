@@ -5,7 +5,7 @@
 sequenceDiagram
     participant O as Organization
     participant P as Platform API
-    participant K as Kinde Auth
+    participant K as Stytch Auth
     participant G as Geographic Service
     participant R as Roaster
     participant S as Stripe Connect
@@ -13,9 +13,9 @@ sequenceDiagram
 
     O->>P: Submit registration with business details
     P->>P: Validate tax ID and business information
-    P->>K: Create Kinde organization with admin user
+    P->>K: Create Stytch organization with admin user
     K->>P: Return organization code and admin invitation
-    P->>O: Send admin invitation email via Kinde
+    P->>O: Send admin invitation email via Stytch
     O->>K: Complete admin account setup
     K->>P: Webhook - admin account activated
     P->>G: Geocode organization address
@@ -46,7 +46,7 @@ sequenceDiagram
 sequenceDiagram
     participant C as Customer
     participant S as Storefront
-    participant K as Kinde Auth
+    participant K as Stytch Auth
     participant P as Platform API
     participant Pay as Stripe
     participant R as Roaster

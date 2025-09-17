@@ -76,7 +76,7 @@ Enable organizations to register, get approved, and set up their fundraising pre
   - **Mitigation**: Progressive disclosure with required field validation
 
 ## Technical Considerations
-- Integration with Kinde for authentication
+- Integration with Stytch for authentication
 - Document upload and storage system
 - Email notification system for status updates
 - Mobile-responsive design for accessibility

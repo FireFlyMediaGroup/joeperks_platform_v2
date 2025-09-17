@@ -5,7 +5,7 @@
 - **Runtime**: Node.js 18+ with Express.js
 - **Database**: PostgreSQL 14+ with TypeORM
 - **Cache**: Redis 7+ for sessions and performance
-- **Authentication**: Kinde Auth with multi-tenant organizations and RBAC
+- **Authentication**: Stytch Auth with multi-tenant organizations and RBAC
 - **API Style**: REST with GraphQL for complex queries
 
 ## Frontend Technologies
@@ -15,7 +15,7 @@
 - **State Management**: Zustand for client state, React Query for server state
 - **Forms**: React Hook Form with Zod validation
 - **Charts**: Recharts for analytics dashboards
-- **Authentication**: Kinde React SDK with organization context
+- **Authentication**: Stytch React SDK with organization context
 
 ## Infrastructure & DevOps
 - **Hosting**: AWS/Vercel hybrid (API on AWS, storefronts on Vercel)
@@ -26,7 +26,7 @@
 - **CI/CD**: GitHub Actions with automated testing
 
 ## External Integrations
-- **Authentication**: Kinde for multi-tenant auth, RBAC, and feature flags
+- **Authentication**: Stytch for multi-tenant auth, RBAC, and feature flags
 - **Payments**: Stripe Connect for multi-party transactions
 - **Shipping**: ShipStation API + individual roaster APIs
 - **Geographic**: Google Maps API for geocoding and distance

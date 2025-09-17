@@ -14,14 +14,17 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET!,
     },
   },
-  modules: {
-    cacheService: {
-      resolve: "@medusajs/cache-redis",
-      options: {
-        redisUrl: process.env.REDIS_URL,
-        ttl: 30, // 30 seconds default cache time
-      },
-    },
+  // Enable Admin dashboard by default in development; allow disabling via ADMIN_DISABLED
+  admin: {
+    disable: process.env.ADMIN_DISABLED === "true",
   },
-  plugins: [],
+  modules: [
+    {
+      resolve: "./src/modules/marketplace",
+    },
+  ],
+  plugins: [
+    // Custom marketplace functionality will be implemented using native Medusa v2 features
+    // Following official recipe: https://docs.medusajs.com/resources/recipes/marketplace/examples/vendors
+  ],
 })

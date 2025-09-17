@@ -96,7 +96,7 @@ This document validates the completion of all prerequisites from `docs/greenfiel
 ### Technology Stack Finalized
 - **Package Manager**: pnpm ✅
 - **Monorepo**: Nx with best-practice names ✅
-- **Backend**: Medusa v2 + marketplace plugin ✅
+- **Backend**: Medusa v2 + native marketplace module ✅
 - **Database**: Supabase Postgres ✅
 - **Cache**: Redis 7 (managed) ✅
 - **Authentication**: Stytch (auth + RBAC) ✅

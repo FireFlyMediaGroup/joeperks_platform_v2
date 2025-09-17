@@ -15,7 +15,7 @@ servers:
 paths:
   /auth/login:
     post:
-      summary: Initiate Kinde OAuth authentication flow
+      summary: Initiate Stytch OAuth authentication flow
       requestBody:
         required: true
         content:
@@ -25,7 +25,7 @@ paths:
               properties:
                 organization_code:
                   type: string
-                  description: Kinde organization code for tenant context
+                  description: Organization identifier for tenant context (Stytch)
                 user_type:
                   type: string
                   enum: [platform_admin, roaster, organization, customer]
@@ -42,14 +42,14 @@ paths:
                 properties:
                   auth_url:
                     type: string
-                    description: Kinde OAuth authorization URL
+                    description: Stytch OAuth authorization URL
                   state:
                     type: string
                     description: OAuth state parameter for security
 
   /auth/callback:
     get:
-      summary: Handle Kinde OAuth callback and establish session
+      summary: Handle Stytch OAuth callback and establish session
       parameters:
         - name: code
           in: query
@@ -264,7 +264,7 @@ components:
       properties:
         id:
           type: string
-          description: Kinde user ID
+          description: Stytch user ID
         email:
           type: string
           format: email
@@ -299,9 +299,9 @@ components:
         id:
           type: string
           format: uuid
-        kinde_org_code:
+        stytch_org_id:
           type: string
-          description: Kinde organization code
+          description: Stytch organization ID
         name:
           type: string
         slug:

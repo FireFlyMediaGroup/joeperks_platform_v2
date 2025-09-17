@@ -21,7 +21,7 @@ Comprehensive authentication and authorization system providing secure access co
 - Session management and security
 
 ### Core Capabilities
-- Multi-portal authentication system (Kinde integration)
+- Multi-portal authentication system (Stytch integration)
 - Role-based permission management
 - Organization-level access control
 - Team member invitation and management
@@ -198,7 +198,7 @@ Comprehensive security and compliance framework ensuring platform security, data
 - Security affects all platform components
 
 ### External Dependencies
-- Third-party service integrations (Stripe, Kinde, etc.)
+- Third-party service integrations (Stripe, Stytch, etc.)
 - Cloud infrastructure providers
 - Compliance and regulatory requirements
 - External security and monitoring services
